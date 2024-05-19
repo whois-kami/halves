@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "533104058128",
+    "project_id": "halves-1f00a",
+    "storage_bucket": "halves-1f00a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533104058128:android:4cb18dc25b6849af4ecf95",
+        "android_client_info": {
+          "package_name": "com.example.halves"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2ZVaoAQMbRn5LPDFUqVwypnsVd5dL42I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

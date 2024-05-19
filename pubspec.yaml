@@ -28,13 +28,17 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  auto_route: ^8.1.3
   cupertino_icons: ^1.0.6
   dots_indicator: ^3.0.0
+  equatable: ^2.0.5
+  firebase_auth: ^4.19.5
+  firebase_core: ^2.31.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
+  get_it: ^7.7.0
   go_router: ^14.1.1
+  shared_preferences: ^2.2.3
   smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
@@ -56,8 +60,12 @@ flutter:
     - lib\assets\images\onboarding_screens\scaffold-bg.png
     - lib\assets\images\onboarding_screens\halves-logo.png
     - lib\assets\images\onboarding_screens\first-screen.png
-    - lib\assets\images\onboarding_screens\second-screen.png 
+    - lib\assets\images\onboarding_screens\second-screen.png
     - lib\assets\images\onboarding_screens\third-screen.png
+    - lib\assets\images\auth_screens\forgot-pass.png
+    - lib\assets\images\auth_screens\login.png
+    - lib\assets\images\auth_screens\new-pass.png
+    - lib\assets\images\auth_screens\sign-up.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
@@ -70,8 +78,12 @@ flutter:
   fonts:
     - family: IBMPlexSansDevanagari
       fonts:
-        - asset: lib\assets\fonts\IBMPlexSansDevanagari-Bold.ttf
-
+        - asset: lib/assets/fonts/IBMPlexSansDevanagari-Bold.ttf
+          weight: 700
+        - asset: lib/assets/fonts/IBMPlexSansDevanagari-Regular.ttf
+          weight: 400
+        - asset: lib\assets\fonts\IBMPlexSansDevanagari-Medium.ttf
+          weight: 500
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
