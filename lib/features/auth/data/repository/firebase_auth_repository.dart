@@ -15,6 +15,11 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<void> logOut() async {
+    await _firebaseAuth.signOut();
+  }
+
+  @override
   Future<void> signUp(String email, String password) async {
     await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,
@@ -25,10 +30,5 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> resetPassword(String email) async {
     UnimplementedError('');
-  }
-
-  @override
-  Future<void> logOut() async {
-    await _firebaseAuth.signOut();
   }
 }
