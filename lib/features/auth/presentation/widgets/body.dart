@@ -13,7 +13,7 @@ class Body extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthLoaded) {
-          context.go('/home');
+          context.go('/home/fillProfile');
         } else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -110,6 +110,7 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
         ),
         const SizedBox(height: 20),
         TextField(
+          obscureText: true,
           controller: passController,
           cursorColor: Colors.white,
           cursorErrorColor: Colors.white,

@@ -4,6 +4,7 @@ import 'package:halves/core/routes/app_routes.dart';
 import 'package:halves/core/services/service_locator.dart';
 import 'package:halves/core/styles/app_theme.dart';
 import 'package:halves/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:halves/features/searching/presentation/bloc/search_bloc.dart';
 
 class HalvesApp extends StatelessWidget {
   const HalvesApp({super.key});
@@ -14,6 +15,9 @@ class HalvesApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<AuthBloc>(),
+        ),
+         BlocProvider(
+          create: (context) => getIt<SearchBloc>(),
         ),
       ],
       child: MaterialApp.router(

@@ -48,6 +48,7 @@ class AppConstants {
   static InputDecoration emailInputDecorationStyle = const InputDecoration(
     filled: true,
     isDense: true,
+    
     contentPadding: EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
     hintText: 'Enter Your Email',
     fillColor: Color(0xFFFC98D8),

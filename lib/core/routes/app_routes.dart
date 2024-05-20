@@ -3,7 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:halves/features/auth/presentation/auth_screen.dart';
 import 'package:halves/features/auth/presentation/widgets/signup_screen.dart';
 import 'package:halves/features/auth/presentation/widgets/onboarding_screens.dart';
-import 'package:halves/features/searching/presentation/widgets/asdsad.dart';
+import 'package:halves/features/searching/presentation/widgets/fill_profile_screen.dart';
+import 'package:halves/features/searching/presentation/widgets/search_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final router = GoRouter(
@@ -44,7 +45,12 @@ final router = GoRouter(
     GoRoute(
       path: '/home',
       builder: (context, state) => const MainSearchScreen(),
-      routes: [],
+      routes: [
+        GoRoute(
+          path: 'fillProfile',
+          builder: (context, state) => const FillProfileScreen(),
+        ),
+      ],
     ),
   ],
 );
