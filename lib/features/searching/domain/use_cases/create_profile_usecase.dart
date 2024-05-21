@@ -10,6 +10,7 @@ class CreateProfileUseCase {
       name: personData.name,
       description: personData.description,
       tags: personData.tags,
+      photos: personData.photos,
     );
   }
 }

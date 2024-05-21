@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:halves/features/auth/data/repository/firebase_auth_repository.dart';
 import 'package:halves/features/auth/domain/repository/auth_repository.dart';
@@ -17,13 +18,17 @@ void setup() {
   getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
   getIt.registerLazySingleton<FirebaseFirestore>(
       () => FirebaseFirestore.instance);
+  getIt.registerLazySingleton<FirebaseStorage>(() => FirebaseStorage.instance);
 
   getIt.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(getIt<FirebaseAuth>()),
   );
 
   getIt.registerLazySingleton<CreateProfileRepository>(
-    () => CreateProfileRepositoryImpl(getIt<FirebaseFirestore>()),
+    () => CreateProfileRepositoryImpl(
+      getIt<FirebaseFirestore>(),
+      getIt<FirebaseStorage>(),
+    ),
   );
 
   getIt.registerLazySingleton<LoginOrLogOutUseCase>(

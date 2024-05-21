@@ -19,8 +19,6 @@ class FillProfileScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-          const SizedBox(height: 100, child: PhotoPickerWidget()),
           SizedBox(height: MediaQuery.of(context).size.height * 0.04),
           const DataFormWidget(),
         ],
@@ -30,32 +28,31 @@ class FillProfileScreen extends StatelessWidget {
 }
 
 class PhotoPickerWidget extends StatefulWidget {
-  const PhotoPickerWidget({super.key});
+  final List<XFile?> photos;
+
+  const PhotoPickerWidget({super.key, required this.photos});
 
   @override
   State<PhotoPickerWidget> createState() => _PhotoPickerWidgetState();
 }
 
 class _PhotoPickerWidgetState extends State<PhotoPickerWidget> {
-  final List<XFile?> photos = [];
-
   @override
   Widget build(BuildContext context) {
     final ImagePicker picker = ImagePicker();
     return ListView.separated(
-      padding: const EdgeInsets.only(left: 20),
       scrollDirection: Axis.horizontal,
-      itemCount: photos.length + 1,
+      itemCount: widget.photos.length + 1,
       separatorBuilder: (context, index) => const SizedBox(width: 10),
       itemBuilder: (context, index) {
-        if (index == photos.length) {
+        if (index == widget.photos.length) {
           return InkWell(
             onTap: () async {
               final XFile? image =
                   await picker.pickImage(source: ImageSource.gallery);
               if (image != null) {
                 setState(() {
-                  photos.add(image);
+                  widget.photos.add(image);
                 });
               }
             },
@@ -85,7 +82,7 @@ class _PhotoPickerWidgetState extends State<PhotoPickerWidget> {
             decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: FileImage(File(photos[index]!.path)),
+                  image: FileImage(File(widget.photos[index]!.path)),
                 ),
                 color: Colors.white,
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
@@ -106,6 +103,7 @@ class DataFormWidget extends StatefulWidget {
 class _DataFormWidgetState extends State<DataFormWidget> {
   late TextEditingController nameController;
   late TextEditingController descriptionController;
+  final List<XFile?> photos = [];
   final Map<String, bool> _selectedChips = {
     'Drink': false,
     'Прогуляться': false,
@@ -138,6 +136,14 @@ class _DataFormWidgetState extends State<DataFormWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          SizedBox(
+            height: 100,
+            child: PhotoPickerWidget(
+              photos: photos,
+            ),
+          ),
+          SizedBox(height: 20),
           Text(
             'What\'s your name?',
           ),
@@ -148,7 +154,7 @@ class _DataFormWidgetState extends State<DataFormWidget> {
             decoration: AppConstants.passInputDecorationStyle,
             style: Theme.of(context).textTheme.labelMedium,
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Text('Add some description about you?'),
           TextField(
             controller: descriptionController,
@@ -157,7 +163,7 @@ class _DataFormWidgetState extends State<DataFormWidget> {
             decoration: AppConstants.passInputDecorationStyle,
             style: Theme.of(context).textTheme.labelMedium,
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Wrap(
             spacing: 8.0,
             runSpacing: 4.0,
@@ -166,8 +172,9 @@ class _DataFormWidgetState extends State<DataFormWidget> {
                 labelStyle: TextStyle(
                     color:
                         _selectedChips[label]! ? Colors.white : Colors.black),
-                backgroundColor:
-                    _selectedChips[label]! ? Color(0xFF1E1E1E) : Colors.white,
+                backgroundColor: _selectedChips[label]!
+                    ? const Color(0xFF1E1E1E)
+                    : Colors.white,
                 label: AnimatedSwitcher(
                   duration: Duration(milliseconds: 300),
                   transitionBuilder:
@@ -205,6 +212,7 @@ class _DataFormWidgetState extends State<DataFormWidget> {
             nameController: nameController,
             descriptionController: descriptionController,
             selectedTags: _selectedChips,
+            photos: photos,
           ),
         ],
       ),
@@ -216,23 +224,25 @@ class _ApplyButtonWidget extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController descriptionController;
   final Map<String, bool> selectedTags;
-  const _ApplyButtonWidget({
-    super.key,
-    required this.nameController,
-    required this.descriptionController,
-    required this.selectedTags,
-  });
+  final List<XFile?> photos;
+  const _ApplyButtonWidget(
+      {super.key,
+      required this.nameController,
+      required this.descriptionController,
+      required this.selectedTags,
+      required this.photos});
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<SearchBloc>();
     UserProfileData user = UserProfileData(
       name: nameController.text,
       description: descriptionController.text,
       tags: selectedTags,
+      photos: photos,
     );
     return ElevatedButton(
-      onPressed: () =>
-          context.read<SearchBloc>().add(CreateProfileEvent(user: user)),
+      onPressed: () => bloc.add(CreateProfileEvent(user: user)),
       child: Text('Find halve with halves'),
     );
   }
