@@ -11,6 +11,7 @@ class CreateProfileUseCase {
       description: personData.description,
       tags: personData.tags,
       photos: personData.photos,
+      sex: personData.sex,
     );
   }
 }

@@ -21,6 +21,7 @@ class CreateProfileRepositoryImpl implements CreateProfileRepository {
     required String description,
     required Map<String, bool> tags,
     required List<XFile?> photos,
+    required String sex,
   }) async {
     List<String> photoUrls = await _uploadPhotosAndGetUrls(photos);
     await users.add({
@@ -28,6 +29,7 @@ class CreateProfileRepositoryImpl implements CreateProfileRepository {
       'description': description,
       'tags': tags,
       'photo': photoUrls,
+      'sex': sex,
     });
   }
 

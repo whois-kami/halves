@@ -6,5 +6,6 @@ abstract class CreateProfileRepository {
     required String description,
     required Map<String, bool> tags,
     required List<XFile?> photos,
+    required String sex,
   });
 }

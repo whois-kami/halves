@@ -13,7 +13,7 @@ class Body extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthLoaded) {
-          context.go('/home/fillProfile');
+          context.go('/chooseSex');
         } else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -169,7 +169,7 @@ class __LoginButtonWidgetState extends State<_LoginButtonWidget> {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             TextButton(
-              onPressed: () => context.go('/auth/signup'),
+              onPressed: () => context.go('/signup'),
               child: Text(
                 'Sign up',
                 style: AppConstants.logSigTextButton,
