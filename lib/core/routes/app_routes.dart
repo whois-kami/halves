@@ -39,7 +39,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/auth',
-      builder: (context, state) => const AuthScreen(),
+      builder: (context, state) => AuthScreen(key: UniqueKey()),
       routes: [
         GoRoute(
           path: 'signup',

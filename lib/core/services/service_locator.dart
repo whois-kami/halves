@@ -8,14 +8,18 @@ import 'package:halves/features/auth/domain/use_cases/login_usecase.dart';
 import 'package:halves/features/auth/domain/use_cases/signup_usecase.dart';
 import 'package:halves/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:halves/features/searching/data/repository/firebase_create_profile_repository.dart';
+import 'package:halves/features/searching/data/repository/firebase_swipe_action_repository.dart';
 import 'package:halves/features/searching/domain/repository/create_profile_repostitory.dart';
+import 'package:halves/features/searching/domain/repository/swipe_actions_repository.dart';
 import 'package:halves/features/searching/domain/use_cases/create_profile_usecase.dart';
+import 'package:halves/features/searching/domain/use_cases/swipe_action_usecase.dart';
 import 'package:halves/features/searching/presentation/bloc/search_bloc.dart';
 
 final getIt = GetIt.instance;
 
 void setup() {
   getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
+
   getIt.registerLazySingleton<FirebaseFirestore>(
       () => FirebaseFirestore.instance);
   getIt.registerLazySingleton<FirebaseStorage>(() => FirebaseStorage.instance);
@@ -31,6 +35,12 @@ void setup() {
     ),
   );
 
+  getIt.registerLazySingleton<SwipeActionsRepository>(
+    () => SwipeActionsRepositoryImpl(
+      getIt<FirebaseFirestore>(),
+    ),
+  );
+
   getIt.registerLazySingleton<LoginOrLogOutUseCase>(
     () => LoginOrLogOutUseCase(getIt<AuthRepository>()),
   );
@@ -43,6 +53,10 @@ void setup() {
     () => CreateProfileUseCase(getIt<CreateProfileRepository>()),
   );
 
+  getIt.registerLazySingleton<SwipeActionsUseCase>(
+    () => SwipeActionsUseCase(getIt<SwipeActionsRepository>()),
+  );
+
   getIt.registerFactory(
     () => AuthBloc(
       loginUseCase: getIt<LoginOrLogOutUseCase>(),
@@ -53,6 +67,7 @@ void setup() {
   getIt.registerFactory(
     () => SearchBloc(
       createUseCase: getIt<CreateProfileUseCase>(),
+      swipeActionsUseCase: getIt<SwipeActionsUseCase>(),
     ),
   );
 }

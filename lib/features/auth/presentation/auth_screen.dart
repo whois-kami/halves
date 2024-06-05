@@ -9,20 +9,13 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasData) {
-          SchedulerBinding.instance.addPostFrameCallback((_) {
-            context.go('/search');
-          });
-          return const SizedBox.shrink();
-        } else {
-          return const LoginScreen();
-        }
-      },
-    );
+    if (FirebaseAuth.instance.currentUser != null) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
+        context.go('/search');
+      });
+      return const SizedBox.shrink();
+    } else {
+      return const LoginScreen();
+    }
   }
 }

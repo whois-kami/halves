@@ -161,6 +161,8 @@ class _ApplyButtonWidget extends StatelessWidget {
       tags: selectedTags,
       photos: photos,
       sex: sex,
+      likedIds: [],
+      matchedIds: [],
     );
     return ElevatedButton(
       onPressed: () {

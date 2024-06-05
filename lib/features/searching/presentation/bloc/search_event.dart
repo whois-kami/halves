@@ -16,3 +16,18 @@ class CreateProfileEvent extends SearchEvent {
   @override
   List<Object> get props => [user];
 }
+
+class SwipeRightEvent extends SearchEvent {
+  final String currentUserId;
+  final String likedUserId;
+  const SwipeRightEvent({
+    required this.currentUserId,
+    required this.likedUserId,
+  });
+
+  @override
+  List<Object> get props => [
+        currentUserId,
+        likedUserId,
+      ];
+}
