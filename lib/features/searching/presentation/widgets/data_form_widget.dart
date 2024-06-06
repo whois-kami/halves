@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -58,8 +59,8 @@ class _DataFormWidgetState extends State<DataFormWidget> {
               photos: photos,
             ),
           ),
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             'What\'s your name?',
           ),
           TextField(
@@ -70,7 +71,7 @@ class _DataFormWidgetState extends State<DataFormWidget> {
             style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 30),
-          Text('Add some description about you?'),
+          const Text('Add some description about you?'),
           TextField(
             controller: descriptionController,
             cursorColor: Colors.white,
@@ -155,7 +156,10 @@ class _ApplyButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<SearchBloc>();
+    final FirebaseAuth _firestoreDb = FirebaseAuth.instance;
+    final currentUser = _firestoreDb.currentUser!.uid;
     UserProfileData user = UserProfileData(
+      uniqueId: currentUser,
       name: nameController.text,
       description: descriptionController.text,
       tags: selectedTags,
@@ -169,7 +173,7 @@ class _ApplyButtonWidget extends StatelessWidget {
         bloc.add(CreateProfileEvent(user: user));
         context.go('/search');
       },
-      child: Text('Find halve with halves'),
+      child: const Text('Find halve with halves'),
     );
   }
 }

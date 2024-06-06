@@ -2,15 +2,17 @@
 import 'package:image_picker/image_picker.dart';
 
 class UserProfileData {
+  String uniqueId;
   String name;
   String description;
   Map<String, bool> tags;
   List<XFile?> photos;
   String sex;
-  List<String> likedIds; 
-  List<String> matchedIds; 
+  List<String> likedIds;
+  List<String> matchedIds;
 
   UserProfileData({
+    required this.uniqueId,
     required this.name,
     required this.description,
     required this.tags,
@@ -21,6 +23,7 @@ class UserProfileData {
   });
 
   UserProfileData copyWith({
+    String? uniqueId,
     String? name,
     String? description,
     Map<String, bool>? tags,
@@ -30,6 +33,7 @@ class UserProfileData {
     List<String>? matchedIds,
   }) {
     return UserProfileData(
+      uniqueId: uniqueId ?? this.uniqueId,
       name: name ?? this.name,
       description: description ?? this.description,
       tags: tags ?? this.tags,

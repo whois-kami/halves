@@ -10,62 +10,49 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        if (state is AuthLoaded) {
-          context.go('/search');
-        } else if (state is AuthError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-            ),
-          );
-        }
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-                r'lib\assets\images\onboarding_screens\scaffold-bg.png'),
-            fit: BoxFit.cover,
-          ),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              r'lib\assets\images\onboarding_screens\scaffold-bg.png'),
+          fit: BoxFit.cover,
         ),
-        child: Column(
-          children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-            const Image(
-              width: 400,
-              height: 270,
-              image: AssetImage(r'lib\assets\images\auth_screens\login.png'),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Namastey!\n',
-                      style: Theme.of(context).textTheme.displayLarge,
-                    ),
-                    TextSpan(
-                      text:
-                          '\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse habitant maecenas ipsum tellus cras faucibus lectus ultrices. Odio scelerisque purus ipsum, tristique.',
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ],
-                ),
+      ),
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+          const Image(
+            width: 400,
+            height: 270,
+            image: AssetImage(r'lib\assets\images\auth_screens\login.png'),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Namastey!\n',
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                  TextSpan(
+                    text:
+                        '\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse habitant maecenas ipsum tellus cras faucibus lectus ultrices. Odio scelerisque purus ipsum, tristique.',
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 40),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
-              child: _LoginFormWidget(),
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 40),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40),
+            child: _LoginFormWidget(),
+          ),
+        ],
       ),
     );
   }

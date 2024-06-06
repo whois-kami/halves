@@ -15,11 +15,11 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
- 
+
   @override
   Widget build(BuildContext context) {
     final currentUser = _auth.currentUser;
-    
+
     if (currentUser == null) {
       return const Center(child: Text('Not logged in'));
     }
@@ -61,9 +61,10 @@ class _SearchScreenState extends State<SearchScreen> {
             }).toList();
 
             return Center(
-              child: userCards.length > 1
+              child: userCards.isNotEmpty
                   ? CardSwiper(
                       cardsCount: userCards.length,
+                      numberOfCardsDisplayed: userCards.length,
                       cardBuilder: (context, index, percentThresholdX,
                               percentThresholdY) =>
                           userCards[index],
@@ -72,7 +73,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         previousIndex,
                         currentIndex,
                         direction,
-                        users[currentIndex!].id,
+                        (currentIndex! - 1) == -1
+                            ? users.last.id
+                            : users[currentIndex - 1].id,
                       ),
                     )
                   : const Text('No users found'),
@@ -83,19 +86,16 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  bool _onSwipe(previousIndex, currentIndex, direction, String likedUserId) {
+  Future<bool> _onSwipe(
+      previousIndex, currentIndex, direction, String likedUserId) async {
     final currentUser = _auth.currentUser;
     if (currentUser == null) {
       return false;
     }
     final currentUserId = currentUser.uid;
     if (direction == CardSwiperDirection.right) {
-      print(currentUserId);
-      print(likedUserId);
-      // context.read<SearchBloc>().add(SwipeRightEvent(
-      //       currentUserId: currentUserId,
-      //       likedUserId: likedUserId,
-      //     ));
+      context.read<SearchBloc>().add(SwipeRightEvent(
+          currentUserId: currentUserId, likedUserId: likedUserId));
     }
     return true;
   }

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,6 +18,7 @@ class CreateProfileRepositoryImpl implements CreateProfileRepository {
 
   @override
   Future<void> create({
+    required uniqueId,
     required String name,
     required String description,
     required Map<String, bool> tags,
@@ -26,7 +28,7 @@ class CreateProfileRepositoryImpl implements CreateProfileRepository {
     required List<String>? matchedIds,
   }) async {
     List<String> photoUrls = await _uploadPhotosAndGetUrls(photos);
-    await users.add({
+    await users.doc(uniqueId).set({
       'name': name,
       'description': description,
       'tags': tags,
@@ -34,6 +36,10 @@ class CreateProfileRepositoryImpl implements CreateProfileRepository {
       'sex': sex,
       'likedIds': likedIds,
       'matchedIds': matchedIds,
+    }).then((_) {
+      log('User added successfully.');
+    }).catchError((error) {
+      log('Error adding user: $error');
     });
   }
 

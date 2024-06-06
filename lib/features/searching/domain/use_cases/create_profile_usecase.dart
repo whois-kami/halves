@@ -7,13 +7,14 @@ class CreateProfileUseCase {
 
   Future<void> createProfile(UserProfileData personData) async {
     await createRepository.create(
+      uniqueId: personData.uniqueId,
       name: personData.name,
       description: personData.description,
       tags: personData.tags,
       photos: personData.photos,
       sex: personData.sex,
       likedIds: [],
-      matchedIds: [],
+      matchedIds: [], 
     );
   }
 }
