@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:halves/features/auth/presentation/auth_screen.dart';
 import 'package:halves/features/auth/presentation/widgets/signup_screen.dart';
 import 'package:halves/features/auth/presentation/widgets/onboarding_screens.dart';
+import 'package:halves/features/messaging/presentation/chats_screen.dart';
 import 'package:halves/features/messaging/presentation/messaging_screen.dart';
 import 'package:halves/features/searching/presentation/widgets/choose_a_sex.dart';
 import 'package:halves/features/searching/presentation/widgets/fill_profile_screen.dart';
@@ -39,7 +40,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/auth',
-      builder: (context, state) => AuthScreen(key: UniqueKey()),
+      builder: (context, state) => const AuthScreen(),
       routes: [
         GoRoute(
           path: 'signup',
@@ -60,6 +61,12 @@ final router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+        path: '/chatWith/:otherUID',
+        builder: (context, state) {
+          final otherUID = state.pathParameters['otherUID']!;
+          return MsgScreen(otherUID: otherUID);
+        }),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =>
           HomeScreen(navigatonShell: navigationShell),
@@ -67,8 +74,8 @@ final router = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/messaging',
-              builder: (context, state) => ProfileScreen(),
+              path: '/chats',
+              builder: (context, state) => const ProfileScreen(),
             )
           ],
         ),
@@ -84,7 +91,7 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: '/profile',
-              builder: (context, state) => MsgScreen(),
+              builder: (context, state) => ChatsScreen(),
             )
           ],
         ),

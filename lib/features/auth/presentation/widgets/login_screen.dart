@@ -8,6 +8,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: UniqueKey(),
       resizeToAvoidBottomInset: false,
       backgroundColor: AppThemeData.authTheme.scaffoldBackgroundColor,
       body: const Body(),

@@ -9,6 +9,7 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     if (FirebaseAuth.instance.currentUser != null) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
         context.go('/search');

@@ -4,6 +4,7 @@ import 'package:halves/core/routes/app_routes.dart';
 import 'package:halves/core/services/service_locator.dart';
 import 'package:halves/core/styles/app_theme.dart';
 import 'package:halves/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:halves/features/messaging/presentation/bloc/chat_bloc.dart';
 import 'package:halves/features/searching/presentation/bloc/search_bloc.dart';
 
 class HalvesApp extends StatelessWidget {
@@ -18,6 +19,9 @@ class HalvesApp extends StatelessWidget {
         ),
          BlocProvider(
           create: (context) => getIt<SearchBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<ChatBloc>(),
         ),
       ],
       child: MaterialApp.router(
