@@ -11,7 +11,7 @@ abstract class ChatRepository {
     required String otherId,
   });
 
-  Future<List<DocumentSnapshot>>  getAviableContacts({
+  Future<List<DocumentSnapshot>> getAviableContacts({
     required String userId,
   });
 }

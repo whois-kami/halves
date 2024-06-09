@@ -8,6 +8,7 @@ sealed class ChatEvent extends Equatable {
   List<Object> get props => [];
 }
 
+
 class SendMessageEvent extends ChatEvent {
   final String message;
   final String reciverId;

@@ -53,7 +53,7 @@ class ChatRepositoryImpl implements ChatRepository {
         .orderBy('timestamp', descending: false)
         .snapshots();
   }
- 
+
   @override
   Future<List<DocumentSnapshot>> getAviableContacts(
       {required String userId}) async {
@@ -67,5 +67,11 @@ class ChatRepositoryImpl implements ChatRepository {
     }).toList());
 
     return contacts;
+  }
+
+  @override
+  Future<DocumentSnapshot<Object?>> loadProfile(
+      {required String userId}) async {
+    return await fireStoreDB.collection('users').doc(userId).get();
   }
 }

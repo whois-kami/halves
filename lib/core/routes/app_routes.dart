@@ -5,10 +5,11 @@ import 'package:halves/features/auth/presentation/widgets/signup_screen.dart';
 import 'package:halves/features/auth/presentation/widgets/onboarding_screens.dart';
 import 'package:halves/features/messaging/presentation/chats_screen.dart';
 import 'package:halves/features/messaging/presentation/messaging_screen.dart';
+import 'package:halves/features/profile/presentation/profile_screen.dart';
+import 'package:halves/features/profile/presentation/settings_screen.dart';
 import 'package:halves/features/searching/presentation/widgets/choose_a_sex.dart';
 import 'package:halves/features/searching/presentation/widgets/fill_profile_screen.dart';
 import 'package:halves/features/searching/presentation/widgets/home_screen.dart';
-import 'package:halves/features/searching/presentation/widgets/profile_screen.dart';
 import 'package:halves/features/searching/presentation/widgets/search_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -75,7 +76,7 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: '/chats',
-              builder: (context, state) => const ProfileScreen(),
+              builder: (context, state) => const ChatsScreen(),
             )
           ],
         ),
@@ -83,16 +84,21 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: '/search',
-              builder: (context, state) => SearchScreen(),
+              builder: (context, state) => const SearchScreen(),
             )
           ],
         ),
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/profile',
-              builder: (context, state) => ChatsScreen(),
-            )
+                path: '/profile',
+                builder: (context, state) => const ProfileScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'settings',
+                    builder: (context, state) => const SettingsScreen(),
+                  )
+                ])
           ],
         ),
       ],

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -168,10 +169,24 @@ class __LoginButtonWidgetState extends State<_LoginButtonWidget> {
     );
   }
 
-  void _signInUser(BuildContext context) {
+  void _signInUser(BuildContext context) async {
     final email = widget.emailController.text;
     final password = widget.passController.text;
     UserData userData = UserData(email: email, passWord: password);
     context.read<AuthBloc>().add(LoginEvent(personData: userData));
+
+    try {
+      FirebaseAuth auth = FirebaseAuth.instance;
+      UserCredential result = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+
+      if (result.user != null) {
+        context.go('/search');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.toString()}')),
+      );
+    }
   }
 }

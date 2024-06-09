@@ -4,10 +4,11 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:halves/features/messaging/domain/use_cases/get_aviable_contacts_usecase.dart';
 
-import 'package:halves/features/messaging/domain/use_cases/get_chat_messages_usecase.dart';
-import 'package:halves/features/messaging/domain/use_cases/send_message_usecase.dart';
+import '../../domain/use_cases/get_aviable_contacts_usecase.dart';
+import '../../domain/use_cases/get_chat_messages_usecase.dart';
+import '../../../profile/domain/use_cases/load_profile_info_usecase.dart';
+import '../../domain/use_cases/send_message_usecase.dart';
 
 part 'chat_event.dart';
 part 'chat_state.dart';
@@ -61,8 +62,15 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
           await aviableContactsUsecase.getAviableContacts(userId: event.userId);
 
       final parsedContacts = contacts.map((contact) {
+        var photo = contact.get('photo');
+
+        // if (photo is List) {
+        //   photo[0];
+        // } else {
+        //   photo;
+        // }
         return {
-          'photo': contact.get('photo'),
+          'photo': photo,
           'name': contact.get('name'),
           'sex': contact.get('sex'),
           'id': contact.id

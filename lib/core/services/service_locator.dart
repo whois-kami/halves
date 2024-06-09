@@ -13,6 +13,10 @@ import 'package:halves/features/messaging/domain/use_cases/get_aviable_contacts_
 import 'package:halves/features/messaging/domain/use_cases/get_chat_messages_usecase.dart';
 import 'package:halves/features/messaging/domain/use_cases/send_message_usecase.dart';
 import 'package:halves/features/messaging/presentation/bloc/chat_bloc.dart';
+import 'package:halves/features/profile/data/repositories/firebase_profile_repository.dart';
+import 'package:halves/features/profile/domain/repositories/profile_repository.dart';
+import 'package:halves/features/profile/domain/use_cases/load_profile_info_usecase.dart';
+import 'package:halves/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:halves/features/searching/data/repository/firebase_create_profile_repository.dart';
 import 'package:halves/features/searching/data/repository/firebase_swipe_action_repository.dart';
 import 'package:halves/features/searching/domain/repository/create_profile_repostitory.dart';
@@ -54,6 +58,17 @@ void setup() {
     ),
   );
 
+  getIt.registerLazySingleton<ProfileRepostiory>(
+    () => FirebaseProfileRepositoryImpl(
+      fireStoreDB: getIt<FirebaseFirestore>(),
+      firebaseAuth: getIt<FirebaseAuth>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<LoadProfileInfoUsecase>(
+    () => LoadProfileInfoUsecase(profileRepostiory: getIt<ProfileRepostiory>()),
+  );
+
   getIt.registerLazySingleton<AviableContactsUsecase>(
     () => AviableContactsUsecase(chatRepository: getIt<ChatRepository>()),
   );
@@ -85,6 +100,12 @@ void setup() {
     () => AuthBloc(
       loginUseCase: getIt<LoginOrLogOutUseCase>(),
       signUpUseCase: getIt<SignUpUseCase>(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ProfileBloc(
+      loadProfileInfoUsecase: getIt<LoadProfileInfoUsecase>(),
     ),
   );
 
