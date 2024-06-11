@@ -26,7 +26,8 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
                 onPressed: () {
                   final selectedSex = getSelectedSex();
                   if (selectedSex.isNotEmpty) {
-                    context.pushReplacement('/chooseSex/fillProfile/$selectedSex');
+                    context
+                        .pushReplacement('/chooseSex/fillProfile/$selectedSex');
                   }
                 },
                 child: const Text('NEXT!'),
@@ -91,7 +92,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: Color(0xFFFD00A6),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Row(
@@ -104,7 +105,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
               value: isChecked,
               onChanged: onChanged,
               activeColor: Colors.white,
-              checkColor: Colors.blue,
+              checkColor: Colors.black.withOpacity(0.6),
             ),
           ),
           Text(

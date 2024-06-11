@@ -23,16 +23,22 @@ class HeaderWidget extends StatelessWidget {
                       as ImageProvider,
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                  Colors.purple.withOpacity(0.5), BlendMode.darken),
+                  Color(0xFF644E9F).withOpacity(0.5), BlendMode.darken),
             ),
           ),
         ),
-        Align(
+        const Align(
           alignment: Alignment.topCenter,
           child: Column(
             children: [
               SizedBox(height: 50),
-              Text('Profile'),
+              Text(
+                'Profile',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
             ],
           ),
         ),

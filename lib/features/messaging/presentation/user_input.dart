@@ -13,25 +13,45 @@ class UserInputWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: TextField(
-            controller: userController,
-            decoration: const InputDecoration(hintText: 'input a message'),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+              ),
+              controller: userController,
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey, width: 2),
+                ),
+                hintText: 'Type a message',
+                hintStyle: TextStyle(color: Colors.white.withOpacity(0.4)),
+                filled: true,
+                fillColor: const Color(0xFF565556),
+              ),
+            ),
           ),
-        ),
-        IconButton(
-          onPressed: () {
-            context.read<ChatBloc>().add(SendMessageEvent(
-                  message: userController.text,
-                  reciverId: reciverId,
-                ));
-            userController.clear();
-          },
-          icon: const Icon(Icons.send),
-        )
-      ],
+          IconButton(
+            onPressed: () {
+              _onPressed(context);
+              userController.clear();
+            },
+            icon: const Icon(Icons.send),
+          )
+        ],
+      ),
     );
+  }
+
+  void _onPressed(BuildContext context) {
+    context.read<ChatBloc>().add(SendMessageEvent(
+          message: userController.text,
+          reciverId: reciverId,
+        ));
+    userController.clear();
   }
 }

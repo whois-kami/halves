@@ -16,11 +16,26 @@ class MessageFieldWidget extends StatelessWidget {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     bool isCurrentUser = data['senderId'] == auth;
-    return Container(
-      alignment: isCurrentUser ? Alignment.centerRight : Alignment.centerLeft,
-      child: Text(
-        data['message'],
-      ),
+    return Row(
+      mainAxisAlignment:
+          isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        Container(
+          alignment:
+              isCurrentUser ? Alignment.centerRight : Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color:
+                isCurrentUser ? const Color(0xFF644E9F) : Colors.grey.shade500,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 25),
+          child: Text(
+            data['message'],
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:halves/features/messaging/presentation/bloc/chat_bloc.dart';
+import 'package:halves/features/messaging/presentation/user_contact_widget.dart';
 
 class ChatsScreen extends StatefulWidget {
   const ChatsScreen({super.key});
@@ -32,21 +35,28 @@ class _ChatsScreenState extends State<ChatsScreen> {
             return Center(child: Text(state.message));
           } else if (state is ContactsLoaded) {
             List<Map<String, dynamic>> contacts = state.contacts;
-            return ListView.builder(
-              itemCount: contacts.length,
-              itemBuilder: (context, index) {
-                Map<String, dynamic> current_contact = contacts[index];
-                return InkWell(
-                  onTap: () => context.go('/chatWith/${current_contact['id']}'),
-                  child: ListTile(
-                    title: Text(
-                      current_contact['name'],
-                      style: TextStyle(color: Colors.white),
+            return SafeArea(
+              child: Column(
+                children: [
+                  Text(
+                    'Chats',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
-                    subtitle: Text(current_contact['sex']),
                   ),
-                );
-              },
+                  Expanded(
+                    child: ListView.separated(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        separatorBuilder: (context, index) => const Divider(),
+                        itemCount: contacts.length,
+                        itemBuilder: (context, index) {
+                          final currentContact = contacts[index];
+                          return UserContactWidget(user: currentContact);
+                        }),
+                  ),
+                ],
+              ),
             );
           }
           return const SizedBox.shrink();

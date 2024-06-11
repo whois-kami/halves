@@ -12,100 +12,108 @@ class AppConstants {
 
   // (login | singup) pass input forms
 
-  static InputDecoration passInputDecorationStyle = const InputDecoration(
-    filled: true,
+  static InputDecoration passInputDecorationStyle = InputDecoration(
     isDense: true,
-    contentPadding: EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
+    contentPadding:
+        const EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
     hintText: 'Enter Your Password',
-    fillColor: Color(0xFFFC98D8),
-    border: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    hintStyle: TextStyle(
+      color: Colors.white.withOpacity(0.5),
+      fontSize: 16,
+    ),
+    border: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    enabledBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    focusedBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    errorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    focusedErrorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    errorStyle: TextStyle(
+    errorStyle: const TextStyle(
       color: Colors.red,
     ),
   );
 
   // (login | singup) email input forms
 
-  static InputDecoration emailInputDecorationStyle = const InputDecoration(
-    filled: true,
+  static InputDecoration emailInputDecorationStyle = InputDecoration(
     isDense: true,
-    
-    contentPadding: EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
+    contentPadding:
+        const EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
     hintText: 'Enter Your Email',
-    fillColor: Color(0xFFFC98D8),
-    border: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    hintStyle: TextStyle(
+      color: Colors.white.withOpacity(0.5),
+      fontSize: 16,
+    ),
+    border: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    enabledBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    focusedBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    errorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    focusedErrorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    errorStyle: TextStyle(
+    errorStyle: const TextStyle(
       color: Colors.red,
     ),
   );
 
   // singup confirm pass input form
 
-  static InputDecoration confirmInputDecorationStyle = const InputDecoration(
-    filled: true,
+  static InputDecoration confirmInputDecorationStyle = InputDecoration(
     isDense: true,
-    contentPadding: EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
+    contentPadding:
+        const EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
     hintText: 'Confirm Your Password',
-    fillColor: Color(0xFFFC98D8),
-    border: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    hintStyle: TextStyle(
+      color: Colors.white.withOpacity(0.5),
+      fontSize: 16,
+    ),
+    border: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    enabledBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    focusedBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    errorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent),
+    focusedErrorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
-    errorStyle: TextStyle(
+    errorStyle: const TextStyle(
       color: Colors.red,
     ),
   );

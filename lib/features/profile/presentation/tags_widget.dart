@@ -14,9 +14,9 @@ class TagsWidget extends StatelessWidget {
           .where((entry) => entry.value != false)
           .map<Widget>((entry) => Chip(
                 label: Text(entry.key),
-                backgroundColor: Colors.purple.withOpacity(0.5),
+                backgroundColor: const Color(0xFF1E1E1E),
                 labelStyle: const TextStyle(color: Colors.white),
-                side: const BorderSide(color: Colors.transparent),
+                side: const BorderSide(color: Colors.white),
               ))
           .toList(),
     );

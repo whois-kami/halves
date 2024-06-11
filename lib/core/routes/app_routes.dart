@@ -7,9 +7,9 @@ import 'package:halves/features/messaging/presentation/chats_screen.dart';
 import 'package:halves/features/messaging/presentation/messaging_screen.dart';
 import 'package:halves/features/profile/presentation/profile_screen.dart';
 import 'package:halves/features/profile/presentation/settings_screen.dart';
-import 'package:halves/features/searching/presentation/widgets/choose_a_sex.dart';
+import 'package:halves/features/searching/presentation/widgets/choose_a_sex_screen.dart';
 import 'package:halves/features/searching/presentation/widgets/fill_profile_screen.dart';
-import 'package:halves/features/searching/presentation/widgets/home_screen.dart';
+import 'package:halves/core/widgets/home_screen.dart';
 import 'package:halves/features/searching/presentation/widgets/search_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

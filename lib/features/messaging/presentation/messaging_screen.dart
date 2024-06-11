@@ -34,7 +34,7 @@ class _MsgScreenState extends State<MsgScreen> {
       appBar: AppBar(
         title: const Text('Chat with '),
         leading: IconButton(
-          onPressed: () => context.go('/profile'),
+          onPressed: () => context.go('/chats'),
           icon: Icon(Icons.chevron_left_outlined),
         ),
       ),
