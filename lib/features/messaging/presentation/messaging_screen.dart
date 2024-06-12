@@ -2,13 +2,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:halves/core/constants/text_constants.dart';
 import 'package:halves/features/messaging/presentation/bloc/chat_bloc.dart';
 import 'package:halves/features/messaging/presentation/message_field.dart';
 import 'package:halves/features/messaging/presentation/user_input.dart';
 
 class MsgScreen extends StatefulWidget {
   final String otherUID;
-  const MsgScreen({super.key, required this.otherUID});
+  final String otherName;
+  const MsgScreen({
+    super.key,
+    required this.otherUID,
+    required this.otherName,
+  });
 
   @override
   State<MsgScreen> createState() => _MsgScreenState();
@@ -16,12 +22,12 @@ class MsgScreen extends StatefulWidget {
 
 class _MsgScreenState extends State<MsgScreen> {
   final TextEditingController userInputController = TextEditingController();
-  final current_user = FirebaseAuth.instance.currentUser!.uid;
+  final currentUser = FirebaseAuth.instance.currentUser!.uid;
   @override
   void initState() {
     context.read<ChatBloc>().add(
           GetChatMessagesEvent(
-            userId: current_user,
+            userId: currentUser,
             otherId: widget.otherUID,
           ),
         );
@@ -31,11 +37,12 @@ class _MsgScreenState extends State<MsgScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: const Text('Chat with '),
+        title: Text('Chat with ${widget.otherName}'),
         leading: IconButton(
           onPressed: () => context.go('/chats'),
-          icon: Icon(Icons.chevron_left_outlined),
+          icon: const Icon(Icons.chevron_left_outlined),
         ),
       ),
       body: Column(
@@ -55,7 +62,8 @@ class _MsgScreenState extends State<MsgScreen> {
                         return Center(child: Text('Error: ${snapshot.error}'));
                       } else if (!snapshot.hasData ||
                           snapshot.data!.docs.isEmpty) {
-                        return const Center(child: Text('No messages'));
+                        return Center(
+                            child: Text(AppTextConstants.messagingNoMessagesText));
                       } else {
                         return ListView(
                           children: snapshot.data!.docs

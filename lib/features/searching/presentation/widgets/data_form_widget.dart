@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:halves/core/constants/style_constants.dart';
+import 'package:halves/core/constants/text_constants.dart';
 import 'package:halves/features/searching/domain/entities/user_data.dart';
 import 'package:halves/features/searching/presentation/bloc/search_bloc.dart';
 import 'package:halves/features/searching/presentation/widgets/photo_picker_widget.dart';
@@ -60,23 +61,23 @@ class _DataFormWidgetState extends State<DataFormWidget> {
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
-            'What\'s your name?',
+          Text(
+            AppTextConstants.fillProfileNameText,
           ),
           TextField(
             controller: nameController,
             cursorColor: Colors.white,
             cursorErrorColor: Colors.white,
-            decoration: AppConstants.passInputDecorationStyle,
+            decoration: AppStyleConstants.passInputDecorationStyle,
             style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 30),
-          const Text('Add some description about you?'),
+          Text(AppTextConstants.fillProfileDescText),
           TextField(
             controller: descriptionController,
             cursorColor: Colors.white,
             cursorErrorColor: Colors.white,
-            decoration: AppConstants.passInputDecorationStyle,
+            decoration: AppStyleConstants.passInputDecorationStyle,
             style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 30),
@@ -173,7 +174,7 @@ class _ApplyButtonWidget extends StatelessWidget {
         bloc.add(CreateProfileEvent(user: user));
         context.go('/search');
       },
-      child: const Text('Find halve with halves'),
+      child: Text(AppTextConstants.fillProfileGoButtonText),
     );
   }
 }

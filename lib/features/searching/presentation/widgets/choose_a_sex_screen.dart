@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:halves/core/constants/text_constants.dart';
 
 class ChooseSexScreen extends StatefulWidget {
   const ChooseSexScreen({super.key});
@@ -41,7 +42,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               checkBoxRow(
-                  title: 'I\'m a girl',
+                  title: AppTextConstants.chooseSexGirlText,
                   isChecked: female,
                   onChanged: (bool? newValue) {
                     setState(() {
@@ -53,7 +54,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
                   }),
               const SizedBox(height: 15),
               checkBoxRow(
-                  title: 'I\'m a man',
+                  title: AppTextConstants.chooseSexManText,
                   isChecked: male,
                   onChanged: (bool? newValue) {
                     setState(() {
@@ -65,7 +66,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
                   }),
               const SizedBox(height: 15),
               checkBoxRow(
-                title: 'I\'m a another',
+                title: AppTextConstants.chooseSexAnotherText,
                 isChecked: another,
                 onChanged: (bool? newValue) {
                   setState(() {
@@ -92,7 +93,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: Color(0xFFFD00A6),
+        color: const Color(0xFFFD00A6),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Row(
@@ -100,8 +101,8 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
           Transform.scale(
             scale: 1.8,
             child: Checkbox(
-              side: BorderSide(color: Colors.white),
-              fillColor: MaterialStatePropertyAll(Colors.white),
+              side: const BorderSide(color: Colors.white),
+              fillColor: const MaterialStatePropertyAll(Colors.white),
               value: isChecked,
               onChanged: onChanged,
               activeColor: Colors.white,

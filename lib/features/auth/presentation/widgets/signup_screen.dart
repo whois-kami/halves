@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:halves/core/constants/style_constants.dart';
+import 'package:halves/core/constants/text_constants.dart';
 import 'package:halves/core/styles/app_theme.dart';
 import 'package:halves/features/auth/domain/entities/user_entity.dart';
 import 'package:halves/features/auth/presentation/bloc/auth_bloc.dart';
@@ -58,11 +59,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Welcome Onboard!\n',
+                        text: AppTextConstants.signUpWelcomeText,
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       TextSpan(
-                        text: 'Let’s help you get onboard.',
+                        text: AppTextConstants.signUpHelpText,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
@@ -123,7 +124,7 @@ class __SignUpLoginFormWidgetState extends State<_SignUpLoginFormWidget> {
           controller: emailController,
           cursorColor: Colors.white,
           cursorErrorColor: Colors.white,
-          decoration: AppConstants.emailInputDecorationStyle,
+          decoration: AppStyleConstants.emailInputDecorationStyle,
           style: Theme.of(context).textTheme.labelMedium,
         ),
         const SizedBox(height: 20),
@@ -131,7 +132,7 @@ class __SignUpLoginFormWidgetState extends State<_SignUpLoginFormWidget> {
           controller: passController,
           cursorColor: Colors.white,
           cursorErrorColor: Colors.white,
-          decoration: AppConstants.passInputDecorationStyle,
+          decoration: AppStyleConstants.passInputDecorationStyle,
           style: Theme.of(context).textTheme.labelMedium,
         ),
         const SizedBox(height: 20),
@@ -139,7 +140,7 @@ class __SignUpLoginFormWidgetState extends State<_SignUpLoginFormWidget> {
           controller: confirmPassController,
           cursorColor: Colors.white,
           cursorErrorColor: Colors.white,
-          decoration: AppConstants.confirmInputDecorationStyle,
+          decoration: AppStyleConstants.confirmInputDecorationStyle,
           style: Theme.of(context).textTheme.labelMedium,
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.06),
@@ -169,12 +170,12 @@ class _BottomSignUpWidget extends StatelessWidget {
     return Column(
       children: [
         ElevatedButton(
-          style: AppConstants.elevatedAuthButtonStyle,
+          style: AppStyleConstants.elevatedAuthButtonStyle,
           onPressed: () {
             if (passController.text != confirmPassController.text) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Password must be same'),
+                SnackBar(
+                  content: Text(AppTextConstants.signUpErrorPassSame),
                 ),
               );
             } else {
@@ -182,7 +183,7 @@ class _BottomSignUpWidget extends StatelessWidget {
             }
           },
           child: Text(
-            'Sign up',
+            AppTextConstants.signUpGoButton,
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
@@ -190,14 +191,14 @@ class _BottomSignUpWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Already have an account?',
+              AppTextConstants.signUpSignInText,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             TextButton(
               onPressed: () => context.go('/auth'),
               child: Text(
-                'Sign in',
-                style: AppConstants.logSigTextButton,
+                AppTextConstants.signInGoButton,
+                style: AppStyleConstants.logSigTextButton,
               ),
             ),
           ],

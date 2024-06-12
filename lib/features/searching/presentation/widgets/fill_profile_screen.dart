@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:halves/core/constants/text_constants.dart';
 import 'package:halves/features/searching/presentation/widgets/data_form_widget.dart';
 
 class FillProfileScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class FillProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('All that\'s left to do \nis fill out the profile'),
+        title: Text(AppTextConstants.fillProfileAppBarText),
         centerTitle: true,
       ),
       body: Column(
@@ -21,8 +22,3 @@ class FillProfileScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-

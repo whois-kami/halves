@@ -17,11 +17,7 @@ class TextFieldWidget extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-            color: Color(0xFF8378A1),
-          ),
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: 3),
         Text(content),

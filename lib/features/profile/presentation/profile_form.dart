@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:halves/core/constants/text_constants.dart';
 import 'package:halves/core/widgets/text_field_widget.dart';
 import 'package:halves/features/profile/presentation/tags_widget.dart';
 
@@ -27,24 +28,21 @@ class ProfileFormWidget extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             name,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 20),
           TextFieldWidget(
             content: description,
-            title: 'About me',
+            title: AppTextConstants.profileAboutMeText,
           ),
-          TextFieldWidget(content: sex, title: 'Sex'),
+          TextFieldWidget(
+            content: sex,
+            title: AppTextConstants.profileSexText,
+          ),
           const SizedBox(height: 20),
-          const Text(
+          Text(
             'Statistics',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF8378A1),
-            ),
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           const SizedBox(height: 15),
           Row(
@@ -53,9 +51,9 @@ class ProfileFormWidget extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   children: [
-                    const TextSpan(
-                      text: 'Liked users: ',
-                      style: TextStyle(
+                    TextSpan(
+                      text: AppTextConstants.profileLikedUsersText,
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                         letterSpacing: 1,
@@ -78,8 +76,8 @@ class ProfileFormWidget extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Matched users: ',
-                      style: TextStyle(
+                      text: AppTextConstants.profileMathcedUsersText,
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                         letterSpacing: 1,
@@ -87,7 +85,7 @@ class ProfileFormWidget extends StatelessWidget {
                     ),
                     TextSpan(
                       text: matchedIds.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1,
@@ -104,7 +102,7 @@ class ProfileFormWidget extends StatelessWidget {
             thickness: 1,
             color: Colors.white.withOpacity(0.3),
           ),
-          const Text('Tags'),
+          Text(AppTextConstants.profileTagsText),
           TagsWidget(tags: tags),
         ],
       ),

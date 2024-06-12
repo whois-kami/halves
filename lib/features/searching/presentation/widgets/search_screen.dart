@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:halves/core/constants/text_constants.dart';
+import 'package:halves/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:halves/features/searching/presentation/bloc/search_bloc.dart';
 import 'package:halves/features/searching/presentation/widgets/user_card_widget.dart';
 
@@ -22,7 +24,7 @@ class _SearchScreenState extends State<SearchScreen> {
     final currentUser = _auth.currentUser;
 
     if (currentUser == null) {
-      return const Center(child: Text('Not logged in'));
+      return Center(child: Text(AppTextConstants.searchNotLoginText));
     }
     return Scaffold(
       body: SafeArea(
@@ -34,7 +36,8 @@ class _SearchScreenState extends State<SearchScreen> {
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return const Center(child: Text('No users found'));
+              return Center(
+                  child: Text(AppTextConstants.searchNoUsersFoundText));
             }
             final users = snapshot.data!.docs
                 .where((userDoc) => userDoc.id != currentUser.uid)
@@ -70,7 +73,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                 : users[currentIndex - 1].id,
                           ),
                         )
-                      : const Center(child: Text('No users found')),
+                      : Center(
+                          child: Text(AppTextConstants.searchNoUsersFoundText)),
                 ),
               ],
             );
@@ -90,6 +94,7 @@ class _SearchScreenState extends State<SearchScreen> {
     if (direction == CardSwiperDirection.right) {
       context.read<SearchBloc>().add(SwipeRightEvent(
           currentUserId: currentUserId, likedUserId: likedUserId));
+      context.read<ProfileBloc>().add(LoadProfileInfoEvent());
     }
     return true;
   }

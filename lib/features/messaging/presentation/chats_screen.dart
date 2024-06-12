@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:halves/core/constants/text_constants.dart';
 import 'package:halves/features/messaging/presentation/bloc/chat_bloc.dart';
 import 'package:halves/features/messaging/presentation/user_contact_widget.dart';
 
@@ -30,7 +28,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
       body: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
           if (state is ChatLoading) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           } else if (state is ChatFailure) {
             return Center(child: Text(state.message));
           } else if (state is ContactsLoaded) {
@@ -39,11 +37,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
               child: Column(
                 children: [
                   Text(
-                    'Chats',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+                    AppTextConstants.chatsText,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Expanded(
                     child: ListView.separated(

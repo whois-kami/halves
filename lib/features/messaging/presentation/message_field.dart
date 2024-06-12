@@ -32,7 +32,7 @@ class MessageFieldWidget extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 25),
           child: Text(
             data['message'],
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ],

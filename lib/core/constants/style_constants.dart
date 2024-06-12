@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppConstants {
+class AppStyleConstants {
   // sign up | login button
 
   static ButtonStyle elevatedAuthButtonStyle = const ButtonStyle(
@@ -122,4 +122,6 @@ class AppConstants {
 
   static TextStyle logSigTextButton =
       const TextStyle(letterSpacing: 1, color: Color(0xFFFF08A7));
+
+  
 }

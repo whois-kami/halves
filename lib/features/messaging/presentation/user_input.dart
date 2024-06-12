@@ -19,13 +19,13 @@ class UserInputWidget extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
               ),
               controller: userController,
               decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey, width: 2),
                 ),
                 hintText: 'Type a message',

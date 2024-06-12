@@ -93,7 +93,7 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
           controller: emailController,
           cursorColor: Colors.white,
           cursorErrorColor: Colors.white,
-          decoration: AppConstants.emailInputDecorationStyle,
+          decoration: AppStyleConstants.emailInputDecorationStyle,
           style: Theme.of(context).textTheme.labelMedium,
         ),
         const SizedBox(height: 20),
@@ -102,7 +102,7 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
           controller: passController,
           cursorColor: Colors.white,
           cursorErrorColor: Colors.white,
-          decoration: AppConstants.passInputDecorationStyle,
+          decoration: AppStyleConstants.passInputDecorationStyle,
           style: Theme.of(context).textTheme.labelMedium,
         ),
         TextButton(
@@ -142,7 +142,7 @@ class __LoginButtonWidgetState extends State<_LoginButtonWidget> {
     return Column(
       children: [
         ElevatedButton(
-          style: AppConstants.elevatedAuthButtonStyle,
+          style: AppStyleConstants.elevatedAuthButtonStyle,
           onPressed: () => _signInUser(context),
           child: Text(
             'Login',
@@ -160,7 +160,7 @@ class __LoginButtonWidgetState extends State<_LoginButtonWidget> {
               onPressed: () => context.go('/auth/signup'),
               child: Text(
                 'Sign up',
-                style: AppConstants.logSigTextButton,
+                style: AppStyleConstants.logSigTextButton,
               ),
             ),
           ],

@@ -31,7 +31,7 @@ class HalvesApp extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: AppThemeData.halvesTheme,
-        routerConfig: router,
+        routerConfig: AppRouter.router,
       ),
     );
   }
