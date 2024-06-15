@@ -1,11 +1,12 @@
-import 'package:halves/features/searching/domain/repository/swipe_actions_repository.dart';
+
+import '../repositories/searching_repository.dart';
 
 class SwipeActionsUseCase {
-  final SwipeActionsRepository swipeRepository;
-  SwipeActionsUseCase(this.swipeRepository);
+  final SearchingRepository searchingRepository;
+  SwipeActionsUseCase(this.searchingRepository);
 
   Future<bool> swipeRight(String currentUserId, String likedUserId) async {
-    return await swipeRepository.swipeRight(
+    return await searchingRepository.swipeRight(
       currentUserId: currentUserId,
       likedUserId: likedUserId,
     );

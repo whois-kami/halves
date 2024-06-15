@@ -4,6 +4,11 @@ class AppThemeData {
   static ThemeData halvesTheme = ThemeData(
     scaffoldBackgroundColor: const Color(0xFF1E1E1E),
     textTheme: const TextTheme(
+      bodySmall: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        color: Colors.white,
+      ),
       headlineMedium: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:halves/core/constants/text_constants.dart';
 
+import '../../../../core/constants/style_constants.dart';
+
 class ChooseSexScreen extends StatefulWidget {
   const ChooseSexScreen({super.key});
 
@@ -24,6 +26,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
         margin: const EdgeInsets.all(10),
         child: isAnySelected
             ? ElevatedButton(
+                style: AppStyleConstants.elevatedAuthButtonStyle,
                 onPressed: () {
                   final selectedSex = getSelectedSex();
                   if (selectedSex.isNotEmpty) {
@@ -31,7 +34,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
                         .pushReplacement('/chooseSex/fillProfile/$selectedSex');
                   }
                 },
-                child: const Text('NEXT!'),
+                child: Text(AppTextConstants.chooseSexGoButton),
               )
             : const SizedBox(),
       ),
@@ -93,9 +96,9 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFFD00A6),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
+          color: const Color(0xFF1E1E1E),
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(color: const Color(0xFFFD00A6))),
       child: Row(
         children: [
           Transform.scale(
@@ -106,7 +109,7 @@ class _ChooseSexScreenState extends State<ChooseSexScreen> {
               value: isChecked,
               onChanged: onChanged,
               activeColor: Colors.white,
-              checkColor: Colors.black.withOpacity(0.6),
+              checkColor: Colors.black,
             ),
           ),
           Text(

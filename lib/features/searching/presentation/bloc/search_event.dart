@@ -31,3 +31,5 @@ class SwipeRightEvent extends SearchEvent {
         likedUserId,
       ];
 }
+
+class CheckingNewMatchsEvent extends SearchEvent {}

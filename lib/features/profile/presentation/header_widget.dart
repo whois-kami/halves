@@ -16,8 +16,13 @@ class HeaderWidget extends StatelessWidget {
             ? CachedNetworkImage(
                 imageUrl: imageUrl!,
                 placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 85),
+                      CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                    ],
                   ),
                 ),
                 errorWidget: (context, url, error) => const Icon(Icons.error),

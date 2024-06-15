@@ -21,6 +21,7 @@ class AppTextConstants {
   static String chooseSexGirlText = 'I\'m a girl';
   static String chooseSexManText = 'I\'m a man';
   static String chooseSexAnotherText = 'I\'m a another';
+  static String chooseSexGoButton = 'NEXT!';
 
   static String fillProfileAppBarText =
       'All that\'s left to do \nis fill out the profile';

@@ -39,6 +39,9 @@ class _MsgScreenState extends State<MsgScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        foregroundColor: Colors.white,
+        centerTitle: true,
+        backgroundColor: const Color(0xFF1E1E1E),
         title: Text('Chat with ${widget.otherName}'),
         leading: IconButton(
           onPressed: () => context.go('/chats'),
@@ -63,7 +66,8 @@ class _MsgScreenState extends State<MsgScreen> {
                       } else if (!snapshot.hasData ||
                           snapshot.data!.docs.isEmpty) {
                         return Center(
-                            child: Text(AppTextConstants.messagingNoMessagesText));
+                            child:
+                                Text(AppTextConstants.messagingNoMessagesText));
                       } else {
                         return ListView(
                           children: snapshot.data!.docs

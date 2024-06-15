@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:halves/features/searching/presentation/widgets/tags_user_widget.dart';
 
 class UserCardWidget extends StatelessWidget {
@@ -27,7 +28,7 @@ class UserCardWidget extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            bottom: 110,
+            bottom: 130,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(16),

@@ -1,19 +1,20 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:halves/features/messaging/domain/entities/message_entity.dart';
 
-import 'package:halves/features/messaging/domain/repositories/chat_repository.dart';
+import '../../domain/entities/message_entity.dart';
 
-class ChatRepositoryImpl implements ChatRepository {
+class ChatFirebaseDataSource {
   final FirebaseFirestore fireStoreDB;
-  final FirebaseAuth firebaseAuth;
-  ChatRepositoryImpl({
+  final FirebaseAuth fireAuth;
+  ChatFirebaseDataSource({
     required this.fireStoreDB,
-    required this.firebaseAuth,
-  });
+    required this.fireAuth,
+  }) : users = fireStoreDB.collection('users');
 
-  @override
+  CollectionReference users;
+
   Future<void> sendMessage(
       {required String receiverId, required String message}) async {
     final String currentUserId = FirebaseAuth.instance.currentUser!.uid;
@@ -37,9 +38,9 @@ class ChatRepositoryImpl implements ChatRepository {
         .doc(chatRoomId)
         .collection('messages')
         .add(newMessage.toMap());
+    log('Message sended successfully.');
   }
 
-  @override
   Stream<QuerySnapshot<Object?>> getMessages(
       {required String userId, required String otherId}) {
     List<String> ids = [userId, otherId];
@@ -54,7 +55,6 @@ class ChatRepositoryImpl implements ChatRepository {
         .snapshots();
   }
 
-  @override
   Future<List<DocumentSnapshot>> getAviableContacts(
       {required String userId}) async {
     DocumentSnapshot snapshot =
@@ -66,12 +66,13 @@ class ChatRepositoryImpl implements ChatRepository {
       return await fireStoreDB.collection('users').doc(id).get();
     }).toList());
 
+    log('Aviable contacts loaded successfully.');
     return contacts;
   }
 
-  @override
   Future<DocumentSnapshot<Object?>> loadProfile(
       {required String userId}) async {
+    log('Messaging profile loaded successfully.');
     return await fireStoreDB.collection('users').doc(userId).get();
   }
 }

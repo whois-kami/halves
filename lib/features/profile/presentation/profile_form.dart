@@ -102,7 +102,11 @@ class ProfileFormWidget extends StatelessWidget {
             thickness: 1,
             color: Colors.white.withOpacity(0.3),
           ),
-          Text(AppTextConstants.profileTagsText),
+          Text(
+            AppTextConstants.profileTagsText,
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          const SizedBox(height: 15),
           TagsWidget(tags: tags),
         ],
       ),

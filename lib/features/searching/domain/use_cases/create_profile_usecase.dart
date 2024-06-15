@@ -1,12 +1,13 @@
 import 'package:halves/features/searching/domain/entities/user_data.dart';
-import 'package:halves/features/searching/domain/repository/create_profile_repostitory.dart';
+
+import '../repositories/searching_repository.dart';
 
 class CreateProfileUseCase {
-  final CreateProfileRepository createRepository;
-  CreateProfileUseCase(this.createRepository);
+  final SearchingRepository searchingRepository;
+  CreateProfileUseCase(this.searchingRepository);
 
   Future<void> createProfile(UserProfileData personData) async {
-    await createRepository.create(
+    await searchingRepository.create(
       uniqueId: personData.uniqueId,
       name: personData.name,
       description: personData.description,

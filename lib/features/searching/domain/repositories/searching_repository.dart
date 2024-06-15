@@ -1,8 +1,13 @@
 import 'package:image_picker/image_picker.dart';
 
-abstract class CreateProfileRepository {
+abstract class SearchingRepository {
+  Future<bool> swipeRight({
+    required String currentUserId,
+    required String likedUserId,
+  });
+
   Future<void> create({
-    required uniqueId,
+    required String uniqueId,
     required String name,
     required String description,
     required Map<String, bool> tags,
@@ -11,4 +16,6 @@ abstract class CreateProfileRepository {
     required List<String>? likedIds,
     required List<String>? matchedIds,
   });
+
+  Future<int> checkNewMatches();
 }

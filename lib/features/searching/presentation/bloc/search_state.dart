@@ -19,11 +19,16 @@ final class SearchLoading extends SearchState {
 
 final class SearchLoaded extends SearchState {
   final bool? isMatching;
+    final bool? newMatches;
+
+  final int? newMatchesCount;
   @override
   List<Object> get props => [];
 
   const SearchLoaded({
     this.isMatching,
+    this.newMatches,
+    this.newMatchesCount,
   });
 }
 

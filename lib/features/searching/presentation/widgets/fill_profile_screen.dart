@@ -9,13 +9,15 @@ class FillProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        backgroundColor: const Color(0xFF1E1E1E),
+        foregroundColor: Colors.white,
         title: Text(AppTextConstants.fillProfileAppBarText),
         centerTitle: true,
       ),
       body: Column(
         children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
           DataFormWidget(sex: sex),
         ],
       ),

@@ -123,5 +123,71 @@ class AppStyleConstants {
   static TextStyle logSigTextButton =
       const TextStyle(letterSpacing: 1, color: Color(0xFFFF08A7));
 
-  
+  static InputDecoration descInputDecorationStyle = InputDecoration(
+    isDense: true,
+    contentPadding:
+        const EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
+    hintText: 'Enter Something About You',
+    hintStyle: TextStyle(
+      color: Colors.white.withOpacity(0.5),
+      fontSize: 16,
+    ),
+    border: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    enabledBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    focusedBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    errorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    focusedErrorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    errorStyle: const TextStyle(
+      color: Colors.red,
+    ),
+  );
+
+  static InputDecoration nameInputDecorationStyle = InputDecoration(
+    isDense: true,
+    contentPadding:
+        const EdgeInsets.symmetric(vertical: 11.0, horizontal: 12.0),
+    hintText: 'Enter Your Name',
+    hintStyle: TextStyle(
+      color: Colors.white.withOpacity(0.5),
+      fontSize: 16,
+    ),
+    border: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    enabledBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    focusedBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    errorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    focusedErrorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFFD00A6)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    errorStyle: const TextStyle(
+      color: Colors.red,
+    ),
+  );
 }

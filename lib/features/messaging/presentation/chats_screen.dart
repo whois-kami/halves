@@ -43,7 +43,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
                   Expanded(
                     child: ListView.separated(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
-                        separatorBuilder: (context, index) => const Divider(),
+                        separatorBuilder: (context, index) =>
+                            const SizedBox.shrink(),
                         itemCount: contacts.length,
                         itemBuilder: (context, index) {
                           final currentContact = contacts[index];

@@ -23,13 +23,13 @@ class _DataFormWidgetState extends State<DataFormWidget> {
   final List<XFile?> photos = [];
   final Map<String, bool> _selectedChips = {
     'Drink': false,
-    'Прогуляться': false,
+    'Take a walk': false,
     'Rest at sea': false,
     'Expensive food': false,
     'Rich man\'s': false,
     'Cinema': false,
     'Photography': false,
-    'Оплата за встречи': false,
+    'Payment for appointments': false,
   };
 
   @override
@@ -63,21 +63,27 @@ class _DataFormWidgetState extends State<DataFormWidget> {
           const SizedBox(height: 20),
           Text(
             AppTextConstants.fillProfileNameText,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
+          const SizedBox(height: 6),
           TextField(
             controller: nameController,
             cursorColor: Colors.white,
             cursorErrorColor: Colors.white,
-            decoration: AppStyleConstants.passInputDecorationStyle,
+            decoration: AppStyleConstants.nameInputDecorationStyle,
             style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 30),
-          Text(AppTextConstants.fillProfileDescText),
+          Text(
+            AppTextConstants.fillProfileDescText,
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+          const SizedBox(height: 6),
           TextField(
             controller: descriptionController,
             cursorColor: Colors.white,
             cursorErrorColor: Colors.white,
-            decoration: AppStyleConstants.passInputDecorationStyle,
+            decoration: AppStyleConstants.descInputDecorationStyle,
             style: Theme.of(context).textTheme.labelMedium,
           ),
           const SizedBox(height: 30),
@@ -91,7 +97,7 @@ class _DataFormWidgetState extends State<DataFormWidget> {
                         _selectedChips[label]! ? Colors.white : Colors.black),
                 backgroundColor: _selectedChips[label]!
                     ? const Color(0xFF1E1E1E)
-                    : Colors.white,
+                    : Colors.white.withOpacity(0.5),
                 label: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
                   transitionBuilder:
@@ -170,11 +176,15 @@ class _ApplyButtonWidget extends StatelessWidget {
       matchedIds: [],
     );
     return ElevatedButton(
+      style: AppStyleConstants.elevatedAuthButtonStyle,
       onPressed: () {
         bloc.add(CreateProfileEvent(user: user));
         context.go('/search');
       },
-      child: Text(AppTextConstants.fillProfileGoButtonText),
+      child: Text(
+        AppTextConstants.fillProfileGoButtonText,
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
     );
   }
 }
