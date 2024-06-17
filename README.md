@@ -26,6 +26,6 @@ Distributed under the MIT License. See LICENSE for more information.
 **telegram** - [Contact me](https://t.me/vtelegpam)<br />
 **Project Link** : [Share project link](https://github.com/whois-kami/halves)
 
-⚙️ Demo
+⚙️ Demo: <br />
 https://github.com/whois-kami/halves/assets/118660818/3d7eb507-fb32-48e4-ab66-e1ddd82ae426
 
